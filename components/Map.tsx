@@ -30,9 +30,12 @@ const Map = () => {
           icon={placeMarker}
           position={[hotel.coordinates.lat, hotel.coordinates.lon]}
         >
-          <Popup>
-            {hotel.name}
-          </Popup>
+          <Tooltip
+            direction="top"
+            offset={[0, -20]}
+          >
+            <Name>{hotel.name}</Name>
+          </Tooltip>
         </Marker>
       ))}
     </MapContainer>

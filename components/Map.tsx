@@ -13,11 +13,17 @@ const placeMarker = icon({
 
 const Map = () => {
   return (
-    <MapContainer center={[hkLat, hkLon]} zoom={12} style={{height: '100%', width: '100%'}}>
+    <MapContainer
+      center={[hkLat, hkLon]}
+      style={{height: '100%', width: '100%'}}
+      zoom={12}
+      zoomControl={false}
+    >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
       />
+      <ZoomControl position="topright" />
       {HOTELS.map(hotel => (
         <Marker
           key={`${hotel.coordinates.lat},${hotel.coordinates.lon}`}

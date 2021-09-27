@@ -1,12 +1,17 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import { icon } from 'leaflet'
+import { MapContainer, Marker, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
+import Leaflet from 'leaflet'
+import styled from 'styled-components';
+import { HOTELS } from '../data/hotels';
+
 import 'leaflet/dist/leaflet.css'
 
-import { HOTELS } from '../data/hotels';
+const Name = styled.div`
+  font-weight: bold;
+`;
 
 const hkLat = 22.3193;
 const hkLon = 114.1694;
-const placeMarker = icon({
+const placeMarker = Leaflet.icon({
   iconUrl: '/pin.png',
   iconSize: [28, 39]
 })

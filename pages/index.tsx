@@ -10,12 +10,12 @@ const Main = styled.main`
   height: 100%;
 `;
 
-
 const Home: NextPage = () => {
-  const Map = dynamic(
-    () => import('./Map'),
+  const MapWithNoSSR = dynamic(
+    () => import('../components/Map'),
     { ssr: false }
   )
+
   return (
     <Container>
       <Head>
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Main>
-        <Map />
+        <MapWithNoSSR />
       </Main>
     </Container>
   )

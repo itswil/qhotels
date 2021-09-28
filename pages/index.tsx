@@ -4,6 +4,7 @@ import Head from 'next/head'
 import styled from 'styled-components';
 
 const Container = styled.div`
+  color: #333;
   height: 100%;
 `;
 const Main = styled.main`

@@ -7,8 +7,16 @@ import IconInfo from '../public/info.svg';
 
 import 'leaflet/dist/leaflet.css'
 
-const Name = styled.div`
-  font-weight: bold;
+const Name = styled.p`
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  margin: 0;
+`;
+const Rating = styled.p`
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  margin: 0;
 `;
 const About = styled.div`
   background-color: #fff;
@@ -56,6 +64,7 @@ const Map = () => {
               offset={[0, -20]}
             >
               <Name>{hotel.name}</Name>
+              <Rating>Google rating: {hotel.rating}</Rating>
             </Tooltip>
           </Marker>
         ))}

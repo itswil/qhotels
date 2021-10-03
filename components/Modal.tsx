@@ -53,7 +53,7 @@ const Modal = (modal: ModalProps) => {
     setIsBrowser(true);
   }, []);
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = (e: React.SyntheticEvent) => {
     e.preventDefault();
     modal.onClose();
   };
@@ -77,10 +77,12 @@ const Modal = (modal: ModalProps) => {
     </StyledModalOverlay>
   ) : null;
 
-  return isBrowser
+  const modalDiv = document.getElementById('modal');
+
+  return isBrowser && modalDiv
   ? createPortal(
       modalContent, 
-      document.getElementById('modal')
+      modalDiv
     )
   : null
 }

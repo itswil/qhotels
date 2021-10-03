@@ -1,9 +1,11 @@
-import Image from 'next/image';
+import React, { useState } from 'react';
 import { MapContainer, Marker, TileLayer, Tooltip, ZoomControl } from 'react-leaflet';
+import Image from 'next/image';
 import Leaflet from 'leaflet'
 import styled from 'styled-components';
 import { HOTELS } from '../data/hotels';
 import IconInfo from '../public/info.svg';
+import Modal from './Modal';
 
 import 'leaflet/dist/leaflet.css'
 
@@ -18,18 +20,25 @@ const Rating = styled.p`
   font-size: 14px;
   margin: 0;
 `;
-const About = styled.div`
+const About = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+
   background-color: #fff;
   border-radius: 50%;
   bottom: 25px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   height: 44px;
-  padding-top: 7px;
+  padding-top: 3px;
   position: absolute;
   right: 10px;
   text-align: center;
   width: 44px;
-  z-index: 400;
+  z-index: 1000;
 `;
 
 const hkLat = 22.3193;
@@ -40,6 +49,8 @@ const placeMarker = Leaflet.icon({
 })
 
 const Map = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <MapContainer
@@ -69,7 +80,7 @@ const Map = () => {
           </Marker>
         ))}
       </MapContainer>
-      <About>
+      <About onClick={() => setShowModal(true)}>
         <Image
           src={IconInfo}
           alt="Information"
@@ -77,6 +88,19 @@ const Map = () => {
           width="30"
         />
       </About>
+      <Modal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+        title="About"
+      >
+        <p>Mapping the hotels available for quarantine in Hong Kong for the Facebook HK Quarantine Support Group.</p>
+
+        <strong>Disclaimer</strong>
+        <p>Whilst every effort is made to provide accurate, up-to-date information, we cannot be held responsible for any errors or omissions.</p>
+        <p>Please always check against the data on the
+          <a href="https://www.coronavirus.gov.hk/eng/designated-hotel.html" target="_blank" rel="noreferrer"> HK Government Coronavirus website</a>
+        .</p>
+      </Modal>
     </>
   )
 }

@@ -22,6 +22,7 @@ const StyledModal = styled.div`
   background: white;
   border-radius: 15px;
   margin: 0 5%;
+  max-width: 500px;
   padding: 20px;
   width: 90%;
 `;

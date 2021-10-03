@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import styled from 'styled-components';
 import IconClose from '../public/close.svg';
-import { HtmlProps } from 'next/dist/shared/lib/utils';
 
 const StyledModalBody = styled.div`
   padding-top: 10px;
